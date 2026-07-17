@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: 💬 General Support
+    url: https://github.com/anonymous291202/dala-tracker/discussions
+    about: Ask questions or get help from the community.
+
+  - name: 🌐 Official Website
+    url: https://dala-tracker.vercel.app
+    about: Visit the official Dala Tracker website.
+
+  - name: 📧 Security Issues
+    url: mailto:dalaaep10@gmail.com
+    about: Privately report security vulnerabilities.
