@@ -1,143 +1,130 @@
 <p align="center">
-  <img src=".github/assets/banner.png" alt="Dala Tracker Banner" width="100%">
+  <img src=".github/assets/banner.png" width="100%" alt="Dala Tracker Banner">
 </p>
+
 <p align="center">
 
-![GitHub last commit](https://img.shields.io/github/last-commit/anonymous291202/dala-tracker?style=for-the-badge)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/anonymous291202/dala-tracker?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/anonymous291202/dala-tracker?style=for-the-badge)
-![GitHub license](https://img.shields.io/github/license/anonymous291202/dala-tracker?style=for-the-badge)
-![GitHub stars](https://img.shields.io/github/stars/anonymous291202/dala-tracker?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/anonymous291202/dala-tracker?style=for-the-badge)
+![Build](https://img.shields.io/github/actions/workflow/status/anonymous291202/dala-tracker/ci.yml?branch=main&style=for-the-badge)
+![License](https://img.shields.io/github/license/anonymous291202/dala-tracker?style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/anonymous291202/dala-tracker?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/anonymous291202/dala-tracker?style=for-the-badge)
 
 </p>
+
 <h1 align="center">Dala Tracker</h1>
 
 <p align="center">
-  <strong>⚡ High-Speed Batch Head Tracking for Video Editors</strong>
+Professional Batch Head Tracking Software for Video Editors.
 </p>
 
 <p align="center">
-Track hundreds of clips in minutes with After Effects–style tracking results.
+Track multiple clips with speed, accuracy, and a modern desktop workflow.
 </p>
+
+---
+
+# Demo
 
 <p align="center">
-  <a href="https://dala-tracker.vercel.app">
-    <img src="https://img.shields.io/badge/🌐_Website-Live-4CAF50?style=for-the-badge">
-  </a>
-  <a href="https://dala-tracker.vercel.app/download">
-    <img src="https://img.shields.io/badge/⬇_Download-Software-0078D4?style=for-the-badge">
-  </a>
+<img src=".github/assets/demo.gif" width="90%">
 </p>
 
 ---
 
-# 🎬 Demo
+# Why Dala Tracker?
 
-<p align="center">
-  <img src=".github/assets/demo.gif" width="100%">
-</p>
+Manual tracking is repetitive and time consuming.
 
----
-
-# ✨ Why Dala Tracker?
-
-Dala Tracker is a desktop application designed for professional video editors who need fast and reliable motion tracking.
-
-Instead of manually tracking every clip inside Adobe After Effects, Dala Tracker automates the entire process while producing tracking results inspired by the After Effects workflow.
-
-Whether you're processing a single clip or an entire folder, Dala Tracker dramatically reduces the time spent on repetitive tracking tasks.
+Dala Tracker streamlines the workflow by making batch head tracking fast, accurate, and easy to manage—allowing editors to spend more time creating and less time repeating the same tasks.
 
 ---
 
-# 🚀 Features
+# Features
 
-- ⚡ Batch head tracking
-- 📂 Process entire folders automatically
-- 🎯 After Effects–style tracking workflow
-- 📹 Supports multiple clips
-- 💻 Modern desktop interface
-- 🔥 Optimized for high-speed processing
-- 📈 Built for professional editing workflows
-
----
-
-# ⚙️ Workflow
-
-```text
-Import Videos
-      │
-      ▼
-Automatic Batch Tracking
-      │
-      ▼
-Review Results
-      │
-      ▼
-Export Tracking Data
-```
+- Batch head tracking
+- Fast processing
+- Modern desktop interface
+- Responsive website
+- Optimized workflow
+- Continuous improvements
 
 ---
 
-# 📸 Screenshots
+# Screenshots
 
-<p align="center">
-  <img src=".github/assets/features.png" width="100%">
-</p>
+| Home | Features |
+|------|----------|
+| ![](.github/assets/home.png) | ![](.github/assets/features-page.png) |
+
+| Download | Analytics |
+|------|----------|
+| ![](.github/assets/download.png) | ![](.github/assets/analytics.png) |
 
 ---
 
-# 🛠 Installation
+# Installation
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/anonymous291202/dala-tracker.git
-
 cd dala-tracker
-
 npm install
-
 npm run dev
 ```
 
-Or download the latest release directly from the website.
+Production build:
+
+```bash
+npm run build
+```
 
 ---
 
-# 🧩 Built With
+# System Requirements
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
+- Windows 10 / 11
+- Node.js 22+
+- Modern web browser
 
 ---
 
-# 🎯 Roadmap
+# Roadmap
 
-- ✅ Batch tracking
-- ✅ Multi-file processing
-- ✅ Modern website
-- ⏳ GPU acceleration
-- ⏳ AI-assisted tracking
-- ⏳ Advanced export formats
+See:
+
+ROADMAP.md
 
 ---
 
-# 💬 Feedback
+# Support
 
-Found a bug or have a feature request?
+See:
 
-Open an Issue or contact me through the website.
-
----
-
-# 📄 License
-
-This project is licensed under the MIT License.
+SUPPORT.md
 
 ---
 
-<p align="center">
-Made with ❤️ for the video editing community.
-</p>
+# Security
+
+See:
+
+SECURITY.md
+
+---
+
+# Contributing
+
+See:
+
+CONTRIBUTING.md
+
+---
+
+# License
+
+Copyright © 2026 Dala Tracker.
+
+All Rights Reserved.
+
+Unauthorized copying, modification, redistribution, or commercial use is prohibited.
