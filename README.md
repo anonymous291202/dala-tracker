@@ -89,35 +89,14 @@ npm run build
 
 ---
 
-# Roadmap
+## 📚 Documentation
 
-See:
-
-ROADMAP.md
-
----
-
-# Support
-
-See:
-
-SUPPORT.md
-
----
-
-# Security
-
-See:
-
-SECURITY.md
-
----
-
-# Contributing
-
-See:
-
-CONTRIBUTING.md
+- 📍 [Roadmap](ROADMAP.md)
+- 🤝 [Contributing](CONTRIBUTING.md)
+- 🛡️ [Security Policy](SECURITY.md)
+- 💬 [Support](SUPPORT.md)
+- 📄 [Changelog](CHANGELOG.md)
+- ⚖️ [License](LICENSE)
 
 ---
 
