@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --void: #05050a;
+  --graphite: #0c0c13;
+  --graphite-2: #14141e;
+  --graphite-3: #1c1c29;
+  --violet: #7c5cff;
+  --violet-bright: #9b7bff;
+  --violet-dim: #4a3b99;
+  --mist: #eeecf6;
+  --mist-dim: #8d8b9c;
+  --mist-faint: #56546a;
+  --danger: #ff6b6b;
+
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --ease-lock: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-scan: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--void);
+  color: var(--mist);
+  font-family: var(--font-body);
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--violet); color: var(--void); }
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--violet-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+.text-balance { text-wrap: balance; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--graphite-3); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--violet-dim); }
+
+.grain { position: relative; }
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.glow-violet { box-shadow: 0 0 60px -10px rgba(124, 92, 255, 0.45); }
+.text-glow { text-shadow: 0 0 40px rgba(124, 92, 255, 0.35); }

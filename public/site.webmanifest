@@ -1,0 +1,13 @@
+{
+  "name": "Dala Tracker",
+  "short_name": "Dala Tracker",
+  "description": "Batch head tracking and stabilization for Windows.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05050a",
+  "theme_color": "#05050a",
+  "icons": [
+    { "src": "/favicons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
