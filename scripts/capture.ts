@@ -8,10 +8,13 @@ const OUTPUT_DIR = ".github/assets";
 
 const pages = [
   { name: "home", route: "/" },
-  { name: "dashboard", route: "/dashboard" },
-  { name: "tracking", route: "/tracking" },
+  { name: "features-page", route: "/features" },
+  { name: "how-it-works", route: "/how-it-works" },
+  { name: "download", route: "/download" },
   { name: "analytics", route: "/analytics" },
-  { name: "donation", route: "/donation" },
+  { name: "community", route: "/community" },
+  { name: "authors", route: "/authors" },
+  { name: "donate", route: "/donate" },
 ];
 
 async function captureDesktop() {
