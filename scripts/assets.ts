@@ -16,6 +16,16 @@ async function main() {
 
   run("tsx scripts/demo.ts");
 
+  run("tsx scripts/gif.ts");
+
+  run("tsx scripts/readme.ts");
+
+  run("tsx scripts/cleanup.ts");
+
+  run("tsx scripts/optimize.ts");
+
+  run("tsx scripts/thumbnail.ts");
+
   console.log("\n✅ Asset pipeline completed!");
 }
 
