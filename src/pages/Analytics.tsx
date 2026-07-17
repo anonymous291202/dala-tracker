@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
-import { getDownloadStats } from "../lib/analytics";
+import { getGlobalDownloadStats } from "../lib/analytics";
 
 export default function Analytics() {
-  const [stats, setStats] = useState<ReturnType<typeof getDownloadStats> | null>(null);
+  const [stats, setStats] = useState<Awaited<ReturnType<typeof getGlobalDownloadStats>> | null>(null);
 
   useEffect(() => {
-    setStats(getDownloadStats());
+    getGlobalDownloadStats().then(setStats);
   }, []);
 
   const maxDay = stats ? Math.max(1, ...stats.days.map((d) => d.count)) : 1;
@@ -22,7 +22,7 @@ export default function Analytics() {
 
       <section className="py-10" style={{ background: "var(--void)" }}>
         <div className="mx-auto max-w-5xl px-6">
-          {stats && !stats.hasBackend && (
+          {stats && !stats.isGlobal && (
             <Reveal>
               <div
                 className="mb-10 rounded-xl border px-5 py-4 text-sm"
@@ -30,9 +30,21 @@ export default function Analytics() {
               >
                 No backend is connected yet, so these numbers reflect activity recorded in{" "}
                 <strong style={{ color: "var(--mist)" }}>this browser only</strong> -- not a global
-                total across all visitors. Point <code className="font-mono">reportEndpoint</code>{" "}
-                in <code className="font-mono">src/lib/analytics.ts</code> at a real backend to
-                start collecting site-wide numbers.
+                total across all visitors. See <code className="font-mono">api/track.ts</code> and{" "}
+                <code className="font-mono">api/stats.ts</code>, and connect Vercel KV to your
+                project to start collecting site-wide numbers.
+              </div>
+            </Reveal>
+          )}
+
+          {stats && stats.isGlobal && (
+            <Reveal>
+              <div
+                className="mb-10 rounded-xl border px-5 py-4 text-sm"
+                style={{ borderColor: "var(--violet-dim)", background: "rgba(124,92,255,0.06)", color: "var(--mist-dim)" }}
+              >
+                Connected to the live backend -- these are real, site-wide numbers across all
+                visitors.
               </div>
             </Reveal>
           )}

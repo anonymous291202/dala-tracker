@@ -16,9 +16,10 @@ export type DownloadEvent = { timestamp: number };
 
 const STORAGE_KEY = "dala-download-events";
 
-// Point this at a real endpoint when one exists. Left empty on purpose --
-// no backend has been wired up yet.
-const reportEndpoint = "";
+// Points at the Vercel KV-backed serverless function in /api/track.ts.
+// If you're not deployed on Vercel with KV connected, this call simply
+// fails silently and the site falls back to local-only counting.
+const reportEndpoint = "/api/track";
 
 function readEvents(): DownloadEvent[] {
   try {
@@ -51,6 +52,17 @@ export function recordDownloadClick() {
     }).catch(() => {
       // Network errors shouldn't block the download itself
     });
+  }
+}
+
+export async function getGlobalDownloadStats(): Promise<ReturnType<typeof getDownloadStats> & { isGlobal: boolean }> {
+  try {
+    const res = await fetch("/api/stats");
+    if (!res.ok) throw new Error("no backend");
+    const data = await res.json();
+    return { ...data, hasBackend: true, isGlobal: true };
+  } catch {
+    return { ...getDownloadStats(), isGlobal: false };
   }
 }
 

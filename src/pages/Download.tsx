@@ -1,14 +1,14 @@
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { LINKS, PRODUCT, SYSTEM_REQUIREMENTS_READY, SYSTEM_REQUIREMENTS } from "../data/content";
-import { recordDownloadClick, getDownloadStats } from "../lib/analytics";
+import { recordDownloadClick, getGlobalDownloadStats } from "../lib/analytics";
 import { useEffect, useState } from "react";
 
 export default function Download() {
-  const [stats, setStats] = useState<ReturnType<typeof getDownloadStats> | null>(null);
+  const [stats, setStats] = useState<Awaited<ReturnType<typeof getGlobalDownloadStats>> | null>(null);
 
   useEffect(() => {
-    setStats(getDownloadStats());
+    getGlobalDownloadStats().then(setStats);
   }, []);
 
   return (
@@ -66,13 +66,18 @@ export default function Download() {
               className="mt-6 flex items-center justify-between rounded-xl border px-5 py-4 text-sm"
               style={{ borderColor: "var(--graphite-3)", background: "var(--graphite-2)" }}
             >
-              <span style={{ color: "var(--mist-dim)" }}>Downloads recorded from this browser</span>
+              <span style={{ color: "var(--mist-dim)" }}>
+                {stats?.isGlobal ? "Total downloads" : "Downloads recorded from this browser"}
+              </span>
               <span className="font-display text-lg" style={{ color: "var(--violet-bright)" }}>
                 {stats?.total ?? 0}
               </span>
             </div>
             <p className="mt-2 text-xs" style={{ color: "var(--mist-faint)" }}>
-              This is local, per-browser activity, not a global download count. Full stats:{" "}
+              {stats?.isGlobal
+                ? "Live, site-wide count."
+                : "This is local, per-browser activity, not a global download count."}{" "}
+              Full stats:{" "}
               <a href="/analytics" className="underline">
                 /analytics
               </a>

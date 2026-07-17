@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import Reveal from "../components/Reveal";
 import AmbientVideoBackground from "../components/AmbientVideoBackground";
 import { LINKS, PRODUCT } from "../data/content";
-import { recordDownloadClick, getDownloadStats } from "../lib/analytics";
+import { recordDownloadClick, getGlobalDownloadStats } from "../lib/analytics";
 
 export default function ActDownloadCTA() {
-  const [total, setTotal] = useState<number | null>(null);
+  const [stats, setStats] = useState<Awaited<ReturnType<typeof getGlobalDownloadStats>> | null>(null);
 
   useEffect(() => {
-    setTotal(getDownloadStats().total);
+    getGlobalDownloadStats().then(setStats);
   }, []);
 
   return (
@@ -43,9 +43,10 @@ export default function ActDownloadCTA() {
             <span>Version {PRODUCT.version}</span>
           </div>
 
-          {total !== null && total > 0 && (
+          {stats && stats.total > 0 && (
             <p className="mt-6 font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--mist-faint)" }}>
-              {total} download{total === 1 ? "" : "s"} from this browser so far
+              {stats.total} download{stats.total === 1 ? "" : "s"}
+              {stats.isGlobal ? " and counting" : " from this browser so far"}
             </p>
           )}
         </Reveal>
