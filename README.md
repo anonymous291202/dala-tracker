@@ -1,7 +1,16 @@
 <p align="center">
   <img src=".github/assets/banner.png" alt="Dala Tracker Banner" width="100%">
 </p>
+<p align="center">
 
+![GitHub last commit](https://img.shields.io/github/last-commit/anonymous291202/dala-tracker?style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/anonymous291202/dala-tracker?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/anonymous291202/dala-tracker?style=for-the-badge)
+![GitHub license](https://img.shields.io/github/license/anonymous291202/dala-tracker?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/anonymous291202/dala-tracker?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/anonymous291202/dala-tracker?style=for-the-badge)
+
+</p>
 <h1 align="center">Dala Tracker</h1>
 
 <p align="center">
