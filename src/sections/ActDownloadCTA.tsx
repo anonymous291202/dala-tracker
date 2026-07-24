@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Reveal from "../components/Reveal";
 import AmbientVideoBackground from "../components/AmbientVideoBackground";
-import { LINKS, PRODUCT } from "../data/content";
+import { PRODUCT } from "../data/content";
+import { useLatestRelease } from "../lib/useLatestRelease";
 import { recordDownloadClick, getGlobalDownloadStats } from "../lib/analytics";
 
 export default function ActDownloadCTA() {
+  const release = useLatestRelease();
   const [stats, setStats] = useState<Awaited<ReturnType<typeof getGlobalDownloadStats>> | null>(null);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function ActDownloadCTA() {
           </p>
 
           <a
-            href={LINKS.download}
+            href={release.url}
             onClick={() => recordDownloadClick()}
             target="_blank"
             rel="noopener noreferrer"
@@ -40,7 +42,7 @@ export default function ActDownloadCTA() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--mist-faint)" }}>
             <span>{PRODUCT.platform} only</span>
             <span>{PRODUCT.downloadSizeApprox}</span>
-            <span>Version {PRODUCT.version}</span>
+            <span>Version {release.version}</span>
           </div>
 
           {stats && stats.total > 0 && (

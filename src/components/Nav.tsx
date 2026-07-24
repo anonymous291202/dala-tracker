@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { NAV_ITEMS, LINKS } from "../data/content";
+import { NAV_ITEMS } from "../data/content";
+import { useLatestRelease } from "../lib/useLatestRelease";
 import { recordDownloadClick } from "../lib/analytics";
 
 export default function Nav() {
+  const release = useLatestRelease();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -53,7 +55,7 @@ export default function Nav() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <a
-            href={LINKS.download}
+            href={release.url}
             onClick={() => recordDownloadClick()}
             target="_blank"
             rel="noopener noreferrer"
@@ -103,7 +105,7 @@ export default function Nav() {
             ))}
           </ul>
           <a
-            href={LINKS.download}
+            href={release.url}
             onClick={() => recordDownloadClick()}
             target="_blank"
             rel="noopener noreferrer"

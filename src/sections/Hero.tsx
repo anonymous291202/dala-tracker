@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { LINKS, PRODUCT } from "../data/content";
+import { PRODUCT } from "../data/content";
+import { useLatestRelease } from "../lib/useLatestRelease";
 import { useReducedMotion } from "../lib/useReducedMotion";
 import { recordDownloadClick } from "../lib/analytics";
 import Perspective3DPanel from "../components/Perspective3DPanel";
@@ -8,6 +9,7 @@ import InterfacePanel from "../components/InterfacePanel";
 import AmbientVideoBackground from "../components/AmbientVideoBackground";
 
 export default function Hero() {
+  const release = useLatestRelease();
   const reticleRef = useRef<HTMLDivElement>(null);
   const bracketsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -138,7 +140,7 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href={LINKS.download}
+              href={release.url}
               onClick={() => recordDownloadClick()}
               target="_blank"
               rel="noopener noreferrer"
@@ -159,7 +161,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--mist-faint)" }}>
             <span>{PRODUCT.price}</span>
             <span>Desktop application &middot; {PRODUCT.platform}</span>
-            <span>Version {PRODUCT.version}</span>
+            <span>Version {release.version}</span>
             <span>{PRODUCT.gpuNote}</span>
           </div>
         </div>

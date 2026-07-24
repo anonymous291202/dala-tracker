@@ -5,6 +5,11 @@
 export const PRODUCT = {
   name: "Dala Tracker",
   tagline: "Batch head tracking and stabilization for editors who value speed and precision.",
+  // Fallback only -- the live version shown across the site comes from
+  // GitHub Releases via /api/latest (see src/lib/useLatestRelease.ts).
+  // This value is only ever seen briefly while that fetch is in flight,
+  // or if it fails. Bump it occasionally so the fallback stays close to
+  // reality, but you don't need to touch it every release anymore.
   version: "1.0.0",
   price: "Free",
   platform: "Windows",
@@ -15,7 +20,11 @@ export const PRODUCT = {
 };
 
 export const LINKS = {
-  download: "https://drive.google.com/file/d/1W8Iv9egLKRGVLaRYITtZABbi3tFJ5Mug/view?usp=drive_link",
+  // Fallback only, same reasoning as PRODUCT.version above -- the live
+  // download link everywhere on the site comes from /api/latest. Kept
+  // here so the site still has a working link if that endpoint or
+  // GitHub itself is briefly unreachable.
+  download: "https://github.com/anonymous291202/dala-tracker/releases/download/v1.0.0/DalaTracker-Setup-1.0.0.exe",
   discord: "https://discord.com/invite/6DncTrc5Qn",
   email: "dalaaep10@gmail.com",
 };

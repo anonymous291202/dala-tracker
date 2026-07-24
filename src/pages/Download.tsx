@@ -1,10 +1,12 @@
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
-import { LINKS, PRODUCT, SYSTEM_REQUIREMENTS_READY, SYSTEM_REQUIREMENTS } from "../data/content";
+import { PRODUCT, SYSTEM_REQUIREMENTS_READY, SYSTEM_REQUIREMENTS } from "../data/content";
+import { useLatestRelease } from "../lib/useLatestRelease";
 import { recordDownloadClick, getGlobalDownloadStats } from "../lib/analytics";
 import { useEffect, useState } from "react";
 
 export default function Download() {
+  const release = useLatestRelease();
   const [stats, setStats] = useState<Awaited<ReturnType<typeof getGlobalDownloadStats>> | null>(null);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function Download() {
                 <div>
                   <p className="font-display text-lg">Dala Tracker</p>
                   <p className="font-mono text-[11px] uppercase tracking-wider" style={{ color: "var(--mist-faint)" }}>
-                    Version {PRODUCT.version}
+                    Version {release.version}
                   </p>
                 </div>
               </div>
@@ -46,7 +48,7 @@ export default function Download() {
               </dl>
 
               <a
-                href={LINKS.download}
+                href={release.url}
             onClick={() => recordDownloadClick()}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -56,7 +58,7 @@ export default function Download() {
                 Download Free
               </a>
               <p className="mt-4 text-center text-xs" style={{ color: "var(--mist-faint)" }}>
-                Opens the current release on Google Drive.
+                Opens the latest release on GitHub -- always up to date, no account needed.
               </p>
             </div>
           </Reveal>

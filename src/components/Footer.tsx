@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { FOOTER_LINKS, LEGAL, LINKS, PRODUCT } from "../data/content";
+import { useLatestRelease } from "../lib/useLatestRelease";
 
 export default function Footer() {
+  const release = useLatestRelease();
   return (
     <footer className="border-t" style={{ borderColor: "var(--graphite-3)" }}>
       <div className="mx-auto max-w-7xl px-6 py-20">
@@ -53,7 +55,7 @@ export default function Footer() {
           style={{ borderColor: "var(--graphite-3)", color: "var(--mist-faint)" }}
         >
           <span>{LEGAL.copyright}</span>
-          <span>Version {PRODUCT.version} &middot; {PRODUCT.platform} &middot; {PRODUCT.price}</span>
+          <span>Version {release.version} &middot; {PRODUCT.platform} &middot; {PRODUCT.price}</span>
           <div className="flex gap-6">
             {FOOTER_LINKS.legal.map((l) => (
               <Link key={l.to} to={l.to} className="hover:text-white">
