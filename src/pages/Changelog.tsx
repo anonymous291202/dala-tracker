@@ -1,8 +1,10 @@
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
-import { CHANGELOG } from "../data/changelog";
+import { useReleases } from "../lib/useReleases";
 
 export default function Changelog() {
+  const { entries } = useReleases();
+
   return (
     <>
       <PageHero eyebrow="Changelog" title="What's changed." />
@@ -10,7 +12,7 @@ export default function Changelog() {
       <section className="pb-24" style={{ background: "var(--void)" }}>
         <div className="mx-auto max-w-3xl px-6">
           <ol className="flex flex-col gap-14">
-            {CHANGELOG.map((entry, i) => (
+            {entries.map((entry, i) => (
               <Reveal key={entry.version} delay={i * 0.05}>
                 <li className="relative border-l pl-8" style={{ borderColor: "var(--graphite-3)" }}>
                   <span
