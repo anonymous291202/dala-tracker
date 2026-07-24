@@ -67,10 +67,25 @@ export default async function handler(req: Request) {
     });
   }
 
-  const exeAsset = release.assets.find((a) => a.name.toLowerCase().endsWith(".exe"));
+  // Must specifically be the Inno Setup installer (filename containing
+  // "setup"), not just any .exe -- if the raw PyInstaller build
+  // (dist/DalaTracker/DalaTracker.exe) gets attached to a release by
+  // mistake instead of the compiled installer_output/DalaTracker-Setup-*.exe,
+  // the desktop app's silent /VERYSILENT install would previously do
+  // nothing and fail invisibly. Reject it here instead, at the source.
+  const exeAsset = release.assets.find(
+    (a) => /setup/i.test(a.name) && a.name.toLowerCase().endsWith(".exe")
+  );
   if (!exeAsset) {
+    const anyExe = release.assets.find((a) => a.name.toLowerCase().endsWith(".exe"));
     return new Response(
-      JSON.stringify({ error: "Latest release has no .exe asset attached" }),
+      JSON.stringify({
+        error: anyExe
+          ? `Latest release has a .exe asset ("${anyExe.name}") but its name doesn't ` +
+            `contain "setup" -- attach the Inno Setup installer output ` +
+            `(e.g. DalaTracker-Setup-${release.tag_name.replace(/^v/i, "")}.exe), not the raw PyInstaller build.`
+          : "Latest release has no .exe asset attached",
+      }),
       { status: 502, headers: { "Content-Type": "application/json" } }
     );
   }

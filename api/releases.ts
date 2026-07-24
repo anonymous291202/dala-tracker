@@ -76,12 +76,18 @@ export default async function handler(req: Request) {
 
   const payload = releases
     .filter((r) => !r.draft && !r.prerelease)
-    .map((r) => ({
-      version: r.tag_name.replace(/^v/i, ""),
-      date: formatDate(r.published_at),
-      highlights: extractHighlights(r.body),
-    }))
-    .filter((r) => r.highlights.length > 0);
+    .map((r) => {
+      const highlights = extractHighlights(r.body);
+      return {
+        version: r.tag_name.replace(/^v/i, ""),
+        date: formatDate(r.published_at),
+        // Every release still shows up even if its body only had the
+        // SHA256 integrity line (or was empty) -- previously that
+        // release just vanished from the changelog entirely, which
+        // looked like the page wasn't updating.
+        highlights: highlights.length > 0 ? highlights : ["No release notes provided for this version."],
+      };
+    });
 
   return new Response(JSON.stringify(payload), {
     status: 200,
